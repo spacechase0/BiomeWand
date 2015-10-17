@@ -8,5 +8,8 @@ import com.spacechase0.minecraft.spacecore.util.ModObject;
 public class Items extends com.spacechase0.minecraft.spacecore.item.Items
 {
 	@ModObject
-	public BiomeWandItem biomeWand;
+	public WandItem wand;
+	
+	@ModObject
+	public SampleItem sample;
 }

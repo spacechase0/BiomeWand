@@ -1,0 +1,15 @@
+item.wand.name=Biome Wand
+item.sample.name=Biome Sample
+
+item.wand.chat.actionSizeChanged=Action size changed to %s.
+item.wand.chat.needBiomeSample=The wand needs a biome sample to function.
+item.wand.tooltip.info1=Craft with a Biome Sample to set the biome.
+item.wand.tooltip.info2=Right click to set the biome a certain radius\n\taround where you click.
+item.wand.tooltip.info3=Right click while sneaking to change the size\n\tof the area affected.
+item.wand.tooltip.size=Size: %s
+
+item.sample.tooltip.info1=Right click when empty to sample the biome\n\twhere you click.
+item.sample.tooltip.info2=Right click while sneaking to sample and\n\toverwrite.
+item.sample.tooltip.biome=Biome: %s
+item.sample.tooltip.none=n/a
+item.sample.tooltip.unknown=Unknown

@@ -1,23 +1,21 @@
 package com.spacechase0.minecraft.biomewand;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import static net.minecraft.init.Blocks.vine;
+import static net.minecraft.init.Items.emerald;
+import static net.minecraft.init.Items.ender_pearl;
+import static net.minecraft.init.Items.gold_ingot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
-import static net.minecraft.init.Blocks.*;
-import static net.minecraft.init.Items.*;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.spacechase0.minecraft.biomewand.item.Items;
 import com.spacechase0.minecraft.spacecore.BaseMod;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-
+// 1.2 - Revamped to use new wand and sample system. Updated to Minecraft 1.8.
 // 1.1.9 - Updated for SpaceCore 0.7.9.
 // 1.1.8 - ...And made sure the fix from 1.1.6 is still there.
 // 1.1.7 - Fixed server crash that I'm 99% sure was there.
@@ -47,31 +45,27 @@ public class BiomeWandMod extends BaseMod
 	public void init( FMLInitializationEvent event )
 	{
 		super.init( event );
+		proxy.init();
+		
 		initRecipes();
 	}
 	
 	private void initRecipes()
 	{
-		if ( config.get( "general", "cheaperRecipe", true ).getBoolean( true ) )
-		{
-			GameRegistry.addRecipe( new ItemStack( items.biomeWand ),
-					                "  d",
-					                " e ",
-					                "G  ",
-					                'd', diamond,
-					                'e', emerald,
-					                'G', gold_ingot );
-		}
-		else
-		{
-			GameRegistry.addRecipe( new ItemStack( items.biomeWand ),
-					                "  d",
-					                " e ",
-					                "G  ",
-					                'd', diamond,
-					                'e', emerald,
-					                'G', gold_block );
-		}
+		GameRegistry.addRecipe( new WandAttunementRecipes() );
+		GameRegistry.addRecipe( new ItemStack( items.sample ),
+                                " g ",
+		                        "gOg",
+		                        " g ",
+		                        'g', gold_ingot,
+		                        'O', ender_pearl );
+		GameRegistry.addRecipe( new ItemStack( items.wand ),
+                                "vve",
+		                        " /v",
+		                        "/ v",
+		                        '/', gold_ingot,
+		                        'v', vine,
+		                        'e', emerald );
 	}
 	
 	public static Configuration config;
